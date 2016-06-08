@@ -9,7 +9,7 @@ Out of scope: authentication, and roles management; forms and views
 <b>User Stories:</b>
 - I want to create a user who is included in a group
 - I want to check if this user exits and is active
-- I want to modify the list of users of a group
+- I want to modify the list of users of a group<br/>
 <b>Entities:</b>
 - User: email, last name, first name, state (active/ non active), creation date
 - Group: name
