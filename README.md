@@ -1,7 +1,7 @@
 ApiTestCase
 ===========
 
-<b>Тестовое задание</b>
+<b>Test case</b>
 
 Subject: Create an API which allow users and groups management
 Out of scope: authentication, and roles management; forms and views
