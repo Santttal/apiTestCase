@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Group;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
@@ -22,9 +23,9 @@ class UserController extends FOSRestController
      */
     public function getUsersAction(Request $request)
     {
-        return $this->getDoctrine()
+        return new JsonResponse($this->getDoctrine()
             ->getRepository(User::class)
-            ->findAll();
+            ->findAll(), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -48,7 +49,7 @@ class UserController extends FOSRestController
         $em->persist($user);
         $em->flush();
 
-        return new Response(null, 201);
+        return new JsonResponse(null, JsonResponse::HTTP_CREATED);
     }
 
     /**
@@ -68,7 +69,7 @@ class UserController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        return $user;
+        return new JsonResponse($user, JsonResponse::HTTP_OK);
     }
 
     /**
@@ -103,6 +104,6 @@ class UserController extends FOSRestController
         $em->merge($user);
         $em->flush();
 
-        return new Response(null, 200);
+        return new JsonResponse(null, JsonResponse::HTTP_OK);
     }
 }
